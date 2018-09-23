@@ -84,8 +84,13 @@ export class TipoindustriaComponent implements OnInit {
 	addCustomer() {
 		const tipoIndustria = new TipoIndustriaModel();
 		tipoIndustria.clear(); // Set all defaults fields
-		tipoIndustria.id = ''
+		/*tipoIndustria.id = ''*/
 		this.editCustomer(tipoIndustria);
+	}
+
+	deleteById(id: string) {
+		console.log(id)
+		this.tipoindustriaService.deleteById(id);
 	}
 
 

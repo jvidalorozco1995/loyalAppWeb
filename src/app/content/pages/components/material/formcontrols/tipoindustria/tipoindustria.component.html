@@ -40,7 +40,7 @@
 				<!-- ID Column -->
 				<ng-container matColumnDef="id">
 					<mat-header-cell *matHeaderCellDef mat-sort-header>ID</mat-header-cell>
-					<mat-cell *matCellDef="let row">{{1}}</mat-cell>
+					<mat-cell *matCellDef="let row">{{row.id}}</mat-cell>
 				</ng-container>
 
 				<!-- Progress Column -->
@@ -55,7 +55,7 @@
 					<mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
 					<mat-cell *matCellDef="let customer">
 						<button mat-icon-button color="primary" matTooltip="Edit customer" (click)="editCustomer(customer)"><mat-icon>create</mat-icon></button>&nbsp;
-						<button mat-icon-button color="warn" matTooltip="Delete customer" type="button" (click)="deleteCustomer(customer)"><mat-icon>delete</mat-icon></button>&nbsp;
+						<button mat-icon-button color="warn" matTooltip="Delete customer" type="button" (click)="deleteById(customer.id)"><mat-icon>delete</mat-icon></button>&nbsp;
 						<button mat-icon-button [matMenuTriggerFor]="menu" matTooltip="More actions"><mat-icon>more_vert</mat-icon></button>
 						<mat-menu #menu="matMenu">
 							<button mat-menu-item><mat-icon>dialpad</mat-icon><span>Redial</span></button>
