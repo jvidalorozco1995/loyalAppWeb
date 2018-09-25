@@ -1,15 +1,22 @@
-export class ClientesModel {
+export class PromocionesModel  {
 
   public id: String;
-  public idSucursal: String;
-  public cantidad: Number;
-  public estadoPromocion: String;
+	public IdSucursal: String;
+	public IdQr: String;
+	public Nombre: String;
+	public FechaInicio: String;
+	public FechaFin: String;
+	public NumeroCompras: String;
+	public Descripcion: String;
 
-
-  constructor(id: String, idSucursal: String, cantidad: Number, estadoPromocion: String) {
-    this.id = id;
-    this.idSucursal = idSucursal;
-    this.cantidad = cantidad;
-    this.estadoPromocion = estadoPromocion;
-  }
+	clear() {
+		this.id = '';
+		this.IdSucursal = '';
+	  this.IdQr = '';
+	  this.Nombre = '';
+	  this.FechaInicio = '';
+	  this.FechaFin = '';
+	  this.NumeroCompras = '';
+	  this.Descripcion = '';
+	}
 }
