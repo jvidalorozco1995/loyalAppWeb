@@ -57,7 +57,8 @@ export class TipoindustriaComponent implements OnInit {
 
 	@ViewChild(MatPaginator) paginator: MatPaginator;
 
-
+// Filter fields
+	@ViewChild('searchInput') searchInput: ElementRef;
 
 	constructor(private tipoindustriaService: TipoIndustriaService,
 				public dialog: MatDialog,
@@ -79,7 +80,15 @@ export class TipoindustriaComponent implements OnInit {
 			console.log(this.dataSource.data);
 		});
 
+
+
 	}
+
+
+	applyFilter(filterValue: string) {
+		this.dataSource.filter = filterValue.trim().toLowerCase();
+	}
+
 
 	addCustomer() {
 		const tipoIndustria = new TipoIndustriaModel();
