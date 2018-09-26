@@ -7,7 +7,7 @@ import {debounceTime, distinctUntilChanged, map, tap} from 'rxjs/operators';
 import {fromEvent, merge, forkJoin, Observable, BehaviorSubject} from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 // Services
-import { CustomersService } from '../../../apps/e-commerce/_core/services';
+import { CustomersService } from '../../../apps/e-commerce/_core/services/index';
 import { LayoutUtilsService, MessageType } from '../../../apps/e-commerce/_core/utils/layout-utils.service';
 import { HttpUtilsService } from '../../../apps/e-commerce/_core/utils/http-utils.service';
 // Models
@@ -57,7 +57,8 @@ export class TipoindustriaComponent implements OnInit {
 
 	@ViewChild(MatPaginator) paginator: MatPaginator;
 
-
+// Filter fields
+	@ViewChild('searchInput') searchInput: ElementRef;
 
 	constructor(private tipoindustriaService: TipoIndustriaService,
 				public dialog: MatDialog,
@@ -79,7 +80,12 @@ export class TipoindustriaComponent implements OnInit {
 			console.log(this.dataSource.data);
 		});
 
+
+
 	}
+
+
+
 
 	addCustomer() {
 		const tipoIndustria = new TipoIndustriaModel();
