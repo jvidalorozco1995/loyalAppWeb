@@ -7,7 +7,7 @@
 	<ng-container mPortletHeadTitle>
 		<div class="m-portlet__head-title">
 			<h3 class="m-portlet__head-text">
-				<span translate="ECOMMERCE.CUSTOMERS.CUSTOMERS_LIST">Lista de Tipo Industria</span>
+				<span translate="ECOMMERCE.CUSTOMERS.CUSTOMERS_LIST">Lista de Cliente</span>
 			</h3>
 		</div>
 		<!-- For localisations we use @ngx-translate | See off. documentations => https://github.com/ngx-translate/core -->
@@ -15,7 +15,7 @@
 	</ng-container>
 
 	<ng-container mPortletHeadTools>
-		<button (click)="addCustomer()" mat-raised-button matTooltip="Crear Tipo Industria" color="primary" type="button">
+		<button (click)="addCustomer()" mat-raised-button matTooltip="Crear Cliente" color="primary" type="button">
 			<span translate="ECOMMERCE.CUSTOMERS.NEW_CUSTOMER">Nuevo</span>
 		</button>
 		<!-- Buttons (Material Angular) | See off.documenations 'https://material.angular.io/components/button/overview' -->
@@ -66,8 +66,8 @@
 				<ng-container matColumnDef="actions">
 					<mat-header-cell *matHeaderCellDef>Opciones</mat-header-cell>
 					<mat-cell *matCellDef="let customer">
-						<button mat-icon-button color="primary" matTooltip="Editar Tipo Industria" (click)="editCustomer(customer)"><mat-icon>create</mat-icon></button>&nbsp;
-						<button mat-icon-button color="warn" matTooltip="Elimar Tipo Industria" type="button" (click)="deleteById(customer.id)"><mat-icon>delete</mat-icon></button>&nbsp;
+						<button mat-icon-button color="primary" matTooltip="Editar Cliente" (click)="editCustomer(customer)"><mat-icon>create</mat-icon></button>&nbsp;
+						<button mat-icon-button color="warn" matTooltip="Elimar Cliente" type="button" (click)="deleteById(customer.id)"><mat-icon>delete</mat-icon></button>&nbsp;
 						<!-- <button mat-icon-button [matMenuTriggerFor]="menu" matTooltip="More actions"><mat-icon>more_vert</mat-icon></button>
 						<mat-menu #menu="matMenu">
 							<button mat-menu-item><mat-icon>dialpad</mat-icon><span>Redial</span></button>

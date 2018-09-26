@@ -15,33 +15,33 @@ import { QueryParamsModel } from '../../../apps/e-commerce/_core/models/query-mo
 
 import { CustomersDataSource } from '../../../apps/e-commerce/_core/models/data-sources/customers.datasource';
 import {CustomerModel} from '../../../apps/e-commerce/_core/models/customer.model';
-import {TipoIndustriaModel} from '../../../../../../core/models/TipoIndustriaModel';
+import {ClientesModel} from '../../../../../../core/models/ClientesModel';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {TipoIndustriaService} from '../../../../../../core/services/tipoindustria.service';
+import {ClienteService} from '../../../../../../core/services/cliente.service';
 
 
 
 
 
 // Components
-import {TipoindustriaEditComponent} from './tipoindustria-edit/tipoindustria-edit.component';
+import {ClienteEditComponent} from './cliente-edit/cliente-edit.component';
 
 
 @Component({
-	selector: 'm-tipoindustria',
-	templateUrl: './tipoindustria.component.html',
+	selector: 'm-cliente',
+	templateUrl: './cliente.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 
 
-export class TipoindustriaComponent implements OnInit {
+export class ClienteComponent implements OnInit {
 
 
 	public currentStatus = 1;
-	public tipoIndustria: TipoIndustriaModel = new TipoIndustriaModel();
+	public cliente: ClientesModel = new ClientesModel();
 
-	public TipoIndustriaForm = new FormGroup({
+	public ClienteForm = new FormGroup({
 		nombre: new FormControl('', Validators.required),
 		id: new FormControl('')
 	});
@@ -59,7 +59,7 @@ export class TipoindustriaComponent implements OnInit {
 
 
 
-	constructor(private tipoindustriaService: TipoIndustriaService,
+	constructor(private clienteService: ClienteService,
 				public dialog: MatDialog,
 				public snackBar: MatSnackBar,
 				private layoutUtilsService: LayoutUtilsService,
@@ -67,14 +67,14 @@ export class TipoindustriaComponent implements OnInit {
 				) {
 
 
-		this.TipoIndustriaForm.setValue({
+		this.ClienteForm.setValue({
 			id: '',
 			nombre: ''
 
 		});
 
 
-		this.tipoindustriaService.get().subscribe(data => {
+		this.clienteService.get().subscribe(data => {
 			this.dataSource.data = data;
 			console.log(this.dataSource.data);
 		});
@@ -82,25 +82,25 @@ export class TipoindustriaComponent implements OnInit {
 	}
 
 	addCustomer() {
-		const tipoIndustria = new TipoIndustriaModel();
-		tipoIndustria.clear(); // Set all defaults fields
-		/*tipoIndustria.id = ''*/
-		this.editCustomer(tipoIndustria);
+		const cliente = new ClientesModel();
+		cliente.clear(); // Set all defaults fields
+		/*cliente.id = ''*/
+		this.editCustomer(cliente);
 	}
 
 	deleteById(id: string) {
 		console.log(id)
-		this.tipoindustriaService.deleteById(id);
+		this.clienteService.deleteById(id);
 	}
 
 
-	editCustomer(tipoIndustria: TipoIndustriaModel) {
-        console.log(tipoIndustria.id);
+	editCustomer(cliente: ClientesModel) {
+        console.log(cliente.id);
      	let saveMessageTranslateParam = 'ECOMMERCE.CUSTOMERS.EDIT.';
-		saveMessageTranslateParam += tipoIndustria.id !== ''  ? 'UPDATE_MESSAGE' : 'ADD_MESSAGE';
+		saveMessageTranslateParam += cliente.id !== ''  ? 'UPDATE_MESSAGE' : 'ADD_MESSAGE';
 		const _saveMessage = this.translate.instant(saveMessageTranslateParam);
-		const _messageType = tipoIndustria.id !== '' ? MessageType.Update : MessageType.Create;
-		const dialogRef = this.dialog.open(TipoindustriaEditComponent, { data: { tipoIndustria } });
+		const _messageType = cliente.id !== '' ? MessageType.Update : MessageType.Create;
+		const dialogRef = this.dialog.open(ClienteEditComponent, { data: { cliente } });
 		dialogRef.afterClosed().subscribe(res => {
 			if (!res) {
 				return;
@@ -132,9 +132,9 @@ export class TipoindustriaComponent implements OnInit {
 
 		if (this.currentStatus === 1) {
 
-			this.tipoIndustria.nombre = this.TipoIndustriaForm.get('nombre').value;
+			this.cliente.nombre = this.ClienteForm.get('nombre').value;
 
-			this.tipoindustriaService.create(this.tipoIndustria).then(() => {
+			this.clienteService.create(this.cliente).then(() => {
 
 			}, (error) => {
 				console.error(error);
